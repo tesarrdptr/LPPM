@@ -1,0 +1,4 @@
+D:\POLMAN\SMT_5\PEMROGRAMAN\Kelompok 7\Aplikasi\ProposalPolmanAstra\obj\Debug\ProposalPolmanAstra.csprojResolveAssemblyReference.cache
+D:\POLMAN\SMT_5\PEMROGRAMAN\Kelompok 7\Aplikasi\ProposalPolmanAstra\obj\Debug\Interop.ADODB.dll
+D:\POLMAN\SMT_5\PEMROGRAMAN\Kelompok 7\Aplikasi\ProposalPolmanAstra\obj\Debug\Interop.CDO.dll
+D:\POLMAN\SMT_5\PEMROGRAMAN\Kelompok 7\Aplikasi\ProposalPolmanAstra\obj\Debug\ProposalPolmanAstra.csproj.ResolveComReference.cache

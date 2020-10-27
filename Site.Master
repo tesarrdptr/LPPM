@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/sweetalert.css" rel="stylesheet" />
+    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="Content/fullcalendar.css" rel='stylesheet' />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+            </Scripts>
+        </asp:ScriptManager>
+        <%: Scripts.Render("~/bundles/swal") %>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" style="min-width: 500px;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="Images/IMG_Logo1.png" width="50" class="pull-left" style="margin: 10px;" />
+                    <a class="navbar-brand" runat="server" href="~/">Sistem Informasi LPPM<br />
+                        Politeknik Manufaktur Astra</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="margin-top: 10px;">
+                        <li><a href='Default'>Beranda</a></li>
+                        <asp:Literal runat="server" ID="literalMenu"></asp:Literal>
+                    </ul>
+                    <% if (Context.User.Identity.IsAuthenticated) { %>
+                        <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+                            <li class="dropdown">
+                                <a href="#" id="welcome" runat="server" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:LinkButton runat="server" ID="LinkProfil" Text="Profil Saya" OnClick="LinkProfil_Click"></asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton runat="server" ID="linkGoToSSO" Text="Halaman SSO" OnClick="linkGoToSSO_Click"></asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton runat="server" ID="linkLogout" Text="Keluar" OnClick="linkLogout_Click"></asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <% } %>
+                </div>
+            </div>
+            <hr />
+        </div>
+        <div class="container body-content" style="margin-top: 50px;">
+            <br />
+            <asp:UpdatePanel UpdateMode="always" runat="server">
+                <ContentTemplate>
+                    <asp:Label runat="server" ID="lblTitle" Font-Size="X-Large"></asp:Label>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <br />
+            <asp:UpdatePanel UpdateMode="always" runat="server">
+                <ContentTemplate>
+                    <div class="alert alert-danger" runat="server" id="divAlert" visible="false"></div>
+                    <div class="alert alert-success" runat="server" id="divSuccess" visible="false"></div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            <br />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - MIS Politeknik Manufaktur Astra</p>
+            </footer>
+        </div>
+    </form>
+    
+    <script type="text/javascript" src="Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="Scripts/moment-with-locales.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="Scripts/moment.min.js"></script>
+    <script type="text/javascript" src="Scripts/fullcalendar.min.js"></script>
+</body>
+</html>
